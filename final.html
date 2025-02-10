@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Happy Birthday! 🎉</h1>
+        <p>Happy Birthday, Lavanya!✨ May this special day bring you endless joy, laughter, and all the happiness you deserve. May your dreams shine as brightly as you do! Wishing you success, love, and unforgettable moments ahead. Stay amazing! Sweet 16! 🎉</p>
+
+        <!-- Play Music Button -->
+        <button id="playMusic" class="btn">🎶 Click here! 🎶</button>
+
+        <!-- Background Music (Audio Element) -->
+        <audio id="birthdayAudio" src="happy-birthday-266285.mp3" preload="auto"></audio>
+
+        <!-- Confetti Elements -->
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+    </div>
+
+    <script>
+        // Function to trigger confetti on page load
+        function triggerConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#e6e6fa', '#d8bfd8', '#800080', '#9400d3']
+            });
+
+            const duration = 3000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 30,
+                    spread: 60,
+                    origin: { y: 0.6 },
+                    colors: ['#e6e6fa', '#d8bfd8', '#800080', '#9400d3']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        window.onload = function() {
+            triggerConfetti(); // Confetti triggers immediately when page loads
+        };
+
+        document.getElementById("playMusic").addEventListener("click", function() {
+            let audio = document.getElementById("birthdayAudio");
+            audio.play().catch(error => console.log("Autoplay prevented:", error)); // Starts the music when clicked
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game - Birthday Celebration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Let's Play a Game! 🎮</h1>
+        <p>Guess a number between 1 and 10:</p>
+        
+        <input type="number" id="guessInput" min="1" max="10">
+        <button onclick="checkGuess()" class="btn">Submit</button>
+        
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // Generate a random number between 1 and 10
+        const randomNumber = Math.floor(Math.random() * 10) + 1;
+
+        function checkGuess() {
+            // Get the user's guess
+            const guess = parseInt(document.getElementById("guessInput").value);
+            const resultText = document.getElementById("result");
+
+            // Check if the guess is correct
+            if (guess === randomNumber) {
+                resultText.innerHTML = "🎉 Correct! You win! 🎉";
+                resultText.style.color = "green";
+                setTimeout(() => {
+                    window.location.href = "final.html"; // Redirect to the final page
+                }, 2000); // Wait 2 seconds before redirecting
+            } else {
+                resultText.innerHTML = "❌ Wrong guess! Try again! ❌";
+                resultText.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
